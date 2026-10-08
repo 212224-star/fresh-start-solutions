@@ -1,24 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [
+    { title: "廢生菜的處理研究｜社會實踐第八組" },
+    { name: "description", content: "社會實踐第八組探討格外生菜的浪費問題，研究加工、季節與天氣的影響。" },
+    { property: "og:title", content: "廢生菜的處理研究｜社會實踐第八組" },
+    { property: "og:description", content: "從一顆格外生菜開始，探索減少浪費的可能。" },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  return <iframe title="社會實踐第八組：廢生菜的處理研究" src="/student-site/index.html" className="standalone-site" />;
 }
